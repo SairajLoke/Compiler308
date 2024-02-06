@@ -1,0 +1,6 @@
+int x = 4 ;
+int y = 5 ;
+
+void fn ( int a, int b ){
+    return a + b ;
+}

@@ -1,0 +1,82 @@
+
+//previous attempts..finally 
+
+// bool checkline_comment(string inputstr){
+//     bool comment_started = false;
+//     bool comment_ended = false;
+//     bool is_comment = false;
+//     // cout<<inputstr.size()<<endl;
+//     for(int i= 0 ; i< inputstr.size() ; ++i){
+      
+//         while(inputstr[i] == ' ' ){++i; }
+        
+//         // if(inputstr[i] != '/'){is_comment = false; break ; } // not for str starting with blnk space
+//         // cout<<inputstr[i]<<i<<endl;
+//         if(i< (inputstr.size() - 1) && inputstr[i] == '/' && inputstr[i+1] == '/'  ){is_comment = true ; break; }
+
+//         if(i< (inputstr.size() - 1) && inputstr[i] == '/'  && inputstr[i+1] == '*' ){cout<<"here"; comment_started = true; i += 2;}// to avoid /*/
+
+//         if(i< (inputstr.size() - 1) && inputstr[i] == '*' && inputstr[i+1] == '/' ){/*cout<<"there";cout<<i<<inputstr[i]<<endl;*/ //this will run after above start 
+//             if (comment_ended ) {cout<<'f';is_comment = false;break; } // comment ended multiple times..not allowed
+//             is_comment = true;
+//             comment_ended = true ;cout<<'c';
+
+//             if(i == (inputstr.size() -2) ){ cout<<'e'; is_comment = true; break; }
+//         }  
+//         // cout<<comment_ended<<comment_started;
+//         cout<<'a'<<endl;
+//         if(inputstr[i] == '/' && i == inputstr.size()-1 ){ return }
+//         if (( inputstr[i] != '/' && inputstr[i] != '*') && ((!comment_started) ||  comment_ended) ){ /*cout<<"done"<<endl;*/ is_comment = false ; break ; }
+
+//     }
+    
+//     cout<<is_comment<<endl;
+//     return is_comment;
+
+// }
+
+
+// int main(){
+
+//     string inputstr ;
+//     ifstream ftest("comment_tests.txt");
+//     std::getline(ftest, inputstr) ; 
+//     // checkline_comment(inputstr);
+//     while(std::getline(ftest, inputstr)){
+//         std::cout<<inputstr<<endl;
+
+//         checkline_comment(inputstr);
+//     }
+//     ftest.close() ; 
+    
+    
+
+//     //
+//     // starting with these consecutive ..
+//         // or
+//     /**/
+//     /****sdjfaj(***)// */
+//     /* */ int f; /*saf*/
+//     //    /*  /*  */      --this works so we can start a comment multiple times(but dont add it in stack multiple time) but ones a end is found pop the start 
+//     //    /*fwsf */ */   -- this one doesnt work
+     
+
+//     //possible comments 
+//     /* /* /* */
+//     //
+//     /*/*/
+    
+    
+
+//     // not a comment
+//     // /*/*  ha/**/*/
+//     // /*/*/*/*/
+    
+    
+//     return 0;
+
+// }
+
+
+
+//

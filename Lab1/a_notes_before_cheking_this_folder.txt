@@ -1,0 +1,10 @@
+Q1
+as told to find comment or not
+
+Q2 
+keywords taken from cpp reference 
+removed c++20 keywords ...but it wont matter much even if we use it( incase one is using c++20 but i am not)
+
+Q3
+multiple comments with /**/ are not currently considered
+input is taken from a comment_test.txt

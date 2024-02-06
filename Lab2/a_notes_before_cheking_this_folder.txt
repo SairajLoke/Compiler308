@@ -1,0 +1,12 @@
+Q1
+various steps to check for id (commented in the code itself)
+
+Q2 
+keywords taken from cpp reference 
+removed c++20 keywords ...but it wont matter much even if we use it( incase one is using c++20 but i am not)
+// keep spaces btw character , identifier in code( subroutine..) i assume this struct currently to successfully differenctiate btw tokens
+
+
+
+Q3
+simple cpp code 
