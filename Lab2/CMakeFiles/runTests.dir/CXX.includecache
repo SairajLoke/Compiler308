@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/sai/Sem6/Compiler308/Lab2/check_identifier.cpp
+iostream
+-
+vector
+-
+set
+-
+fstream
+-
+
+/home/sai/Sem6/Compiler308/Lab2/tests.cpp
+gtest/gtest.h
+-
+check_identifier.cpp
+/home/sai/Sem6/Compiler308/Lab2/check_identifier.cpp
+

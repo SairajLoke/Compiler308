@@ -4,15 +4,17 @@
 %}
 
 %%
-[' ']*"/*"[a-zA-Z0-9\n\t ]*"*/"  {count++;}
-[' ']*"//"[a-zA-Z0-9\t ]*"\n"   {count++;}
+[' ']*"/*".*"*/"  {count++;} /*{***/ //using Kleene closur
+[' ']*"//".*   {count++;}//cout<<"here"<<a<} 
 %%
 
 int main(int argc ,char* argv[])
-{
+{	
+	//how to find no. lines of comments
+
     yyin=fopen("comments.txt","r");
 	yyout=fopen("dump.c","w");
-	yylex( );
+	yylex();
 	printf("The number of comment lines=%d\n",count);
     //mytest file has 3 comments.
 	fclose(yyin);

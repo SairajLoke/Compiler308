@@ -7,7 +7,9 @@
 %}
 
 %%
-[a-zA-Z] {fprintf(yyout, "%c", (char)(yytext[0]+count) ) ; count += 1 ;} 
+[a-z] {fprintf(yyout, "%c", ((char)(yytext[0]-'a'+count) % 26 ) + 'a' ) ; printf("encountered %d returned %d\n",(int)yytext[0],(int)yytext[0]+count) ; count = (count+1)%26 ;} 
+[A-Z] {fprintf(yyout, "%c", ((char)(yytext[0]-'A'+count) % 26 ) + 'A' ) ; printf("encountered %d returned %d\n",(int)yytext[0],(int)yytext[0]+count) ; count = (count+1)%26 ;} 
+
 %%
 
 int main(int argc ,char* argv[])

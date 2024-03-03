@@ -44,7 +44,7 @@ bool simplecheck(string s){
     return 1;
 }
 
-int check_identifier(){
+int check_identifier(string inputstr){
     set<string> keywords_set ; //no find in unordered set
     ifstream keywordsfile("keywords.txt");
     string keyline;
@@ -57,10 +57,10 @@ int check_identifier(){
     keywordsfile.close() ; 
     std::cout<<"\nMy kewords set size: "<<keywords_set.size()<<endl;
 
-    cout<<"\nInput the identifier to check"<<endl ; 
-    string inputstr ;
+    // cout<<"\nInput the identifier to check"<<endl ; 
+    // string inputstr ;
 
-    getline(cin, inputstr);
+    // getline(cin, inputstr);
     //check no space btw words
     cout<<"received "<<inputstr<<endl;
     if(inputstr.size() == 0 ){ cout<<"Empty string is not a identifier"<<endl;return 0;}
@@ -73,13 +73,13 @@ int check_identifier(){
     if( keywords_set.find(inputstr) != keywords_set.end() ){ cout<<"Not an Identifier but an keyword" ; return 0; }
     cout<<"Yes, it is a valid identifier"<<endl;
 
-    return 0;
+    return 1;
 }
-int main(){
+// int main(){
 
-    check_identifier();
-    return 0;
+//     check_identifier();
+//     return 0;
 
 
-}
+// }
 

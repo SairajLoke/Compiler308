@@ -7,6 +7,9 @@
 %%
 "printf" {cnt_printf++;}
 "scanf" {cnt_scanf++;}
+"printf("[.*]")" {cnt_printf++;}
+"scanf("[.*]")"  {cnt_scanf++;}
+[a-zA-Z0-9]* {;} //ie it is neighter of above 
 %%
 
 int main(int argc ,char* argv[])
