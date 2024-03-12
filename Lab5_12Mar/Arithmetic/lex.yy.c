@@ -373,14 +373,14 @@ static const YY_CHAR yy_ec[256] =
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    4,    4,    4,
         4,    4,    4,    4,    4,    4,    4,    1,    1,    1,
-        1,    1,    1,    1,    4,    4,    4,    4,    4,    4,
-        4,    4,    4,    4,    4,    4,    4,    4,    4,    4,
-        4,    4,    4,    4,    4,    4,    4,    4,    4,    4,
-        4,    4,    4,    4,    4,    4,    4,    4,    4,    4,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
 
-        4,    4,    4,    4,    4,    4,    4,    4,    4,    4,
-        4,    4,    4,    4,    4,    4,    4,    4,    4,    4,
-        4,    4,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
@@ -438,14 +438,14 @@ int yy_flex_debug = 0;
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
 char *yytext;
-#line 1 "test2.l"
-#line 2 "test2.l"
+#line 1 "arith.l"
+#line 2 "arith.l"
    /* Definition section */
   #include<stdio.h>
   #include "y.tab.h"
   extern int yylval;
 #line 448 "lex.yy.c"
-/* Rule Section */ 
+/* Rule Section */
 #line 450 "lex.yy.c"
 
 #define INITIAL 0
@@ -663,10 +663,9 @@ YY_DECL
 		}
 
 	{
-#line 10 "test2.l"
+#line 9 "arith.l"
 
-
-#line 670 "lex.yy.c"
+#line 669 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -725,31 +724,35 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 12 "test2.l"
-{ yylval = yytext; printf("\ninput - %s", yytext) ; return WORD; }
+#line 10 "arith.l"
+{
+          yylval=atoi(yytext);
+          return NUMBER;
+  
+       }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 14 "test2.l"
+#line 15 "arith.l"
 ;
 	YY_BREAK
 case 3:
 /* rule 3 can match eol */
 YY_RULE_SETUP
-#line 16 "test2.l"
+#line 17 "arith.l"
 return 0;
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 18 "test2.l"
+#line 19 "arith.l"
 return yytext[0];
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 20 "test2.l"
+#line 21 "arith.l"
 ECHO;
 	YY_BREAK
-#line 753 "lex.yy.c"
+#line 756 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1754,11 +1757,10 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 20 "test2.l"
+#line 21 "arith.l"
 
   
-int yywrap()  //to return 1, when end of input occurs
+int yywrap()
 {
  return 1;
 }
-

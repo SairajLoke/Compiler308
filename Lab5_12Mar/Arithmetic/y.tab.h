@@ -49,13 +49,11 @@ extern int yydebug;
 # define YYTOKENTYPE
   enum yytokentype
   {
-    NUMBER = 258,
-    WORD = 259
+    NUMBER = 258
   };
 #endif
 /* Tokens.  */
 #define NUMBER 258
-#define WORD 259
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED

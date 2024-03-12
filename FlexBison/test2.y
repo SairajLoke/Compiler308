@@ -33,7 +33,7 @@ void main()
    FILE* fp = fopen("FlexBison/words.txt", "r");
    yyin = fp;
    
-   for(int i = 0 ; i< 4 ++i){
+   for(int i = 0 ; i< 4 ; ++i){
       yyparse();
    }
   
