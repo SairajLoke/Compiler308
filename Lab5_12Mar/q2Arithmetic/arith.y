@@ -1,9 +1,16 @@
 %{
-   /* Definition section */
+/*
+Sairaj Loke
+210001035 Assignment 5 12 March Q2 
+
+I was trying to maintain a set of chars but need to check compiling yacc in c++ for that 
+so you can see the unordered set mentions in the code...haven't removed it yet as i'll get back to it some other day
+*/
+
   #include<stdio.h>
   int flag=0;
 //   #include<unordered_set>
-//   unordered_set<char> operator_set;
+//   unordered_set<char> operator_set;  
   int total_operands = 0;
   int total_operators= 0;
 
@@ -23,9 +30,7 @@
   
 ArithmeticExpression: E{
   
-         printf("\nResult=%d\n", $$);
-  
-         return 0;
+         printf("\nResult=%d\n", $$);//the expr could be invalid at this point
   
         };
  E:E'+'E {$$=$1+$3; total_operators++ ;} //operator_set.insert('+');}
@@ -45,8 +50,16 @@ ArithmeticExpression: E{
  ;
   
 %%
+
+
   
-//driver code
+void yyerror()
+{
+   printf("\nEntered arithmetic expression is Invalid\n\n");
+   flag=1;
+}
+
+
 void main()
 {
    printf("\nEnter Any Arithmetic Expression which can have operations Addition, Subtraction, Multiplication, Division, Modulus and Round brackets:\n");
@@ -64,10 +77,3 @@ void main()
    }
 }
 
-
-  
-void yyerror()
-{
-   printf("\nEntered arithmetic expression is Invalid\n\n");
-   flag=1;
-}

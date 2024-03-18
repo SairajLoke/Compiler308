@@ -1303,7 +1303,7 @@ yyreduce:
   
          printf("\nResult=%d\n", yyval);
   
-         return 0;
+         // return 0;
   
         }
 #line 1310 "y.tab.c"
@@ -1586,7 +1586,15 @@ yyreturn:
 }
 #line 47 "arith.y"
 
+
+
   
+void yyerror()
+{
+   printf("\nEntered arithmetic expression is Invalid\n\n");
+   flag=1;
+}
+
 //driver code
 void main()
 {
@@ -1605,10 +1613,3 @@ void main()
    }
 }
 
-
-  
-void yyerror()
-{
-   printf("\nEntered arithmetic expression is Invalid\n\n");
-   flag=1;
-}

@@ -1,5 +1,9 @@
 %{
-   /* Definition section */
+   /*
+Sairaj Loke
+210001035 Assignment 5 12 March Q2 
+*/
+
   #include<stdio.h>
   #include "y.tab.h"
   extern int yylval;
