@@ -66,24 +66,37 @@
 
 
 /* First part of user prologue.  */
-#line 1 "pat.y"
+#line 1 "q2closedparenthesis.y"
 
-#include <stdio.h>
-// int yylex();
-void yyerror(const char *s);
-int As = 0;
-int Bs = 0;
-int flag = 0 ;
 /*
-Note:  
-Refernces: https://developer.ibm.com/tutorials/au-lexyacc/
+Sairaj Loke
+210001035 Assignment 6 19 March Q2
 
+I was trying to maintain a set of chars but need to check compiling yacc in c++ for that 
+so you can see the unordered set mentions in the code...haven't removed it yet as i'll get back to it some other day
+*/
+
+  #include<stdio.h>
+  int flag=0;
+  int total_Rbracket_pairs= 0;
+  int total_Cbracket_pairs= 0;
+  int total_Sbracket_pairs= 0;
+  extern int yytext;
+  extern FILE *yyin;
+  extern FILE *yyout;
+  extern char current_open_parenthesis = '-';
+
+/*
+    CodeChunk: '('CodeChunk')' {total_Rbracket_pairs++ ; printf("r");} 
+
+ | CodeChunk: '{'CodeChunk'}' {total_Cbracket_pairs++ ;printf("c");} 
+
+ | CodeChunk: '['CodeChunk']' {total_Sbracket_pairs++ ;printf("s");} 
 
 */
 
 
-
-#line 87 "y.tab.c"
+#line 100 "y.tab.c"
 
 # ifndef YY_CAST
 #  ifdef __cplusplus
@@ -131,17 +144,23 @@ extern int yydebug;
 # define YYTOKENTYPE
   enum yytokentype
   {
-    COUNT_A = 258,
-    COUNT_B = 259,
-    EOL = 260,
-    C = 261
+    OpParenR = 258,
+    ClsParenR = 259,
+    OpParenC = 260,
+    ClsParenC = 261,
+    OpParenS = 262,
+    ClsParenS = 263,
+    CodeEle = 264
   };
 #endif
 /* Tokens.  */
-#define COUNT_A 258
-#define COUNT_B 259
-#define EOL 260
-#define C 261
+#define OpParenR 258
+#define ClsParenR 259
+#define OpParenC 260
+#define ClsParenC 261
+#define OpParenS 262
+#define ClsParenS 263
+#define CodeEle 264
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
@@ -459,21 +478,21 @@ union yyalloc
 #endif /* !YYCOPY_NEEDED */
 
 /* YYFINAL -- State number of the termination state.  */
-#define YYFINAL  5
+#define YYFINAL  10
 /* YYLAST -- Last index in YYTABLE.  */
-#define YYLAST   5
+#define YYLAST   14
 
 /* YYNTOKENS -- Number of terminals.  */
-#define YYNTOKENS  7
+#define YYNTOKENS  10
 /* YYNNTS -- Number of nonterminals.  */
-#define YYNNTS  4
+#define YYNNTS  3
 /* YYNRULES -- Number of rules.  */
-#define YYNRULES  6
+#define YYNRULES  7
 /* YYNSTATES -- Number of states.  */
-#define YYNSTATES  9
+#define YYNSTATES  17
 
 #define YYUNDEFTOK  2
-#define YYMAXUTOK   261
+#define YYMAXUTOK   264
 
 
 /* YYTRANSLATE(TOKEN-NUM) -- Symbol number corresponding to TOKEN-NUM
@@ -511,14 +530,14 @@ static const yytype_int8 yytranslate[] =
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     1,     2,     3,     4,
-       5,     6
+       5,     6,     7,     8,     9
 };
 
 #if YYDEBUG
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_int8 yyrline[] =
 {
-       0,    30,    30,    32,    33,    35,    36
+       0,    41,    41,    42,    44,    46,    48,    50
 };
 #endif
 
@@ -527,8 +546,9 @@ static const yytype_int8 yyrline[] =
    First, the terminals, then, starting at YYNTOKENS, nonterminals.  */
 static const char *const yytname[] =
 {
-  "$end", "error", "$undefined", "COUNT_A", "COUNT_B", "EOL", "C",
-  "$accept", "Patt", "count_A_list", "count_B_list", YY_NULLPTR
+  "$end", "error", "$undefined", "OpParenR", "ClsParenR", "OpParenC",
+  "ClsParenC", "OpParenS", "ClsParenS", "CodeEle", "$accept", "CCode",
+  "CodeChunk", YY_NULLPTR
 };
 #endif
 
@@ -537,11 +557,11 @@ static const char *const yytname[] =
    (internal) symbol number NUM (which must be that of a token).  */
 static const yytype_int16 yytoknum[] =
 {
-       0,   256,   257,   258,   259,   260,   261
+       0,   256,   257,   258,   259,   260,   261,   262,   263,   264
 };
 # endif
 
-#define YYPACT_NINF (-4)
+#define YYPACT_NINF (-2)
 
 #define yypact_value_is_default(Yyn) \
   ((Yyn) == YYPACT_NINF)
@@ -555,7 +575,8 @@ static const yytype_int16 yytoknum[] =
      STATE-NUM.  */
 static const yytype_int8 yypact[] =
 {
-      -3,    -3,     1,    -2,    -4,    -4,    -2,    -4,    -4
+       0,     0,     0,     0,    -2,     4,    -2,     2,     7,     6,
+      -2,     0,     0,     0,    -2,    -2,    -2
 };
 
   /* YYDEFACT[STATE-NUM] -- Default reduction number in state STATE-NUM.
@@ -563,19 +584,20 @@ static const yytype_int8 yypact[] =
      means the default is an error.  */
 static const yytype_int8 yydefact[] =
 {
-       4,     4,     0,     6,     3,     1,     6,     2,     5
+       7,     7,     7,     7,     6,     0,     2,     0,     0,     0,
+       1,     7,     7,     7,     3,     4,     5
 };
 
   /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int8 yypgoto[] =
 {
-      -4,    -4,     2,    -1
+      -2,    -2,    -1
 };
 
   /* YYDEFGOTO[NTERM-NUM].  */
 static const yytype_int8 yydefgoto[] =
 {
-      -1,     2,     3,     7
+      -1,     5,     6
 };
 
   /* YYTABLE[YYPACT[STATE-NUM]] -- What to do in state STATE-NUM.  If
@@ -583,31 +605,34 @@ static const yytype_int8 yydefgoto[] =
      number is the opposite.  If YYTABLE_NINF, syntax error.  */
 static const yytype_int8 yytable[] =
 {
-       1,     5,     6,     4,     0,     8
+       7,     8,     9,     1,    10,     2,    11,     3,     0,     4,
+      14,    15,    16,    12,    13
 };
 
 static const yytype_int8 yycheck[] =
 {
-       3,     0,     4,     1,    -1,     6
+       1,     2,     3,     3,     0,     5,     4,     7,    -1,     9,
+      11,    12,    13,     6,     8
 };
 
   /* YYSTOS[STATE-NUM] -- The (internal number of the) accessing
      symbol of state STATE-NUM.  */
 static const yytype_int8 yystos[] =
 {
-       0,     3,     8,     9,     9,     0,     4,    10,    10
+       0,     3,     5,     7,     9,    11,    12,    12,    12,    12,
+       0,     4,     6,     8,    12,    12,    12
 };
 
   /* YYR1[YYN] -- Symbol number of symbol that rule YYN derives.  */
 static const yytype_int8 yyr1[] =
 {
-       0,     7,     8,     9,     9,    10,    10
+       0,    10,    11,    12,    12,    12,    12,    12
 };
 
   /* YYR2[YYN] -- Number of symbols on the right hand side of rule YYN.  */
 static const yytype_int8 yyr2[] =
 {
-       0,     2,     2,     2,     0,     2,     0
+       0,     2,     1,     4,     4,     4,     1,     0
 };
 
 
@@ -1302,32 +1327,38 @@ yyreduce:
   YY_REDUCE_PRINT (yyn);
   switch (yyn)
     {
+  case 2:
+#line 41 "q2closedparenthesis.y"
+                {}
+#line 1334 "y.tab.c"
+    break;
+
   case 3:
-#line 32 "pat.y"
-                                   {As++; printf("%d", As); }
-#line 1309 "y.tab.c"
+#line 42 "q2closedparenthesis.y"
+                                                 {total_Rbracket_pairs++ ; printf("r");}
+#line 1340 "y.tab.c"
     break;
 
   case 4:
-#line 33 "pat.y"
-                          {yyval = 0;}
-#line 1315 "y.tab.c"
+#line 44 "q2closedparenthesis.y"
+                                         {total_Cbracket_pairs++ ; printf("c");}
+#line 1346 "y.tab.c"
     break;
 
   case 5:
-#line 35 "pat.y"
-                                   {Bs++;printf("%d", Bs);}
-#line 1321 "y.tab.c"
+#line 46 "q2closedparenthesis.y"
+                                         {total_Sbracket_pairs++ ; printf("s");}
+#line 1352 "y.tab.c"
     break;
 
   case 6:
-#line 36 "pat.y"
-                          {yyval = 0;}
-#line 1327 "y.tab.c"
+#line 48 "q2closedparenthesis.y"
+           {printf("Code Ele: \t%d--\n", yylval);}
+#line 1358 "y.tab.c"
     break;
 
 
-#line 1331 "y.tab.c"
+#line 1362 "y.tab.c"
 
       default: break;
     }
@@ -1559,19 +1590,43 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 38 "pat.y"
+#line 52 "q2closedparenthesis.y"
 
 
-void yyerror(const char *s) {
-   printf("String Rejected: \n");
-   fprintf(stderr, "Error: %s\n", s);
+
+  
+void yyerror()
+{
+   printf("\n Invalid Parenthesis structure \n");
+   printf("\n Unbalanced Parenthesis : %c\n", current_open_parenthesis);
+   // printf("\t%d--\n", yylval);
    flag=1;
 }
 
-int main() {
+
+void main()
+{
+   yyin=fopen("q1input.c","r");
+	yyout=fopen("q1output.txt","w");
+
+   //remove comments
+   // printf("Preprocessing ie. removing comments to avoid invalid parenthesis decisions");
+
+   
+   //check closed bracket
+   // printf("\nChecking Closed Parenthesis");
+   
    yyparse();
    if(flag==0){
-      printf("\nString Accepted: %d A's followed by %d B's\n", As, Bs);
+    printf("\nEntered Ccode has Balanced Parenthesis\n");
+    printf("\nTotal () pairs: %d", total_Rbracket_pairs);
+    printf("\nTotal {} pairs: %d", total_Cbracket_pairs);
+    printf("\nTotal [] pairs: %d\n", total_Sbracket_pairs);
+
    }
-   return 0;
+
+   printf("closing resources\n");
+   fclose(yyin);
+   fclose(yyout);
 }
+

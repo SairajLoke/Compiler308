@@ -27,7 +27,7 @@ Refernces: https://developer.ibm.com/tutorials/au-lexyacc/
 
 %%
 
-Patt: count_A_list count_B_list {};//KEEPING THE accp lines will print it even after rejected 
+Patt: count_A_list count_B_list ;//KEEPING THE accp lines will print it even after rejected 
 
 count_A_list: COUNT_A count_A_list {As++; printf("%d", As); }
             | /* empty */ {$$ = 0;};

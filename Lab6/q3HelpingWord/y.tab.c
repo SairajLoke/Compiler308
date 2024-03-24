@@ -66,24 +66,26 @@
 
 
 /* First part of user prologue.  */
-#line 1 "pat.y"
+#line 1 "q3helpingwordle.y"
 
-#include <stdio.h>
-// int yylex();
-void yyerror(const char *s);
-int As = 0;
-int Bs = 0;
-int flag = 0 ;
 /*
-Note:  
-Refernces: https://developer.ibm.com/tutorials/au-lexyacc/
+Sairaj Loke
+210001035 Assignment 6 19 March Q3
 
+1 interesting observation is that the tokens
 
 */
 
+  #include<stdio.h>
+  int flag=0;
+  extern int yytext;
+  extern FILE *yyin;
+  extern FILE *yyout;
 
 
-#line 87 "y.tab.c"
+
+
+#line 89 "y.tab.c"
 
 # ifndef YY_CAST
 #  ifdef __cplusplus
@@ -131,17 +133,13 @@ extern int yydebug;
 # define YYTOKENTYPE
   enum yytokentype
   {
-    COUNT_A = 258,
-    COUNT_B = 259,
-    EOL = 260,
-    C = 261
+    HelpingVerb = 258,
+    NotHelpingVerb = 259
   };
 #endif
 /* Tokens.  */
-#define COUNT_A 258
-#define COUNT_B 259
-#define EOL 260
-#define C 261
+#define HelpingVerb 258
+#define NotHelpingVerb 259
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
@@ -459,21 +457,21 @@ union yyalloc
 #endif /* !YYCOPY_NEEDED */
 
 /* YYFINAL -- State number of the termination state.  */
-#define YYFINAL  5
+#define YYFINAL  2
 /* YYLAST -- Last index in YYTABLE.  */
-#define YYLAST   5
+#define YYLAST   4
 
 /* YYNTOKENS -- Number of terminals.  */
-#define YYNTOKENS  7
+#define YYNTOKENS  5
 /* YYNNTS -- Number of nonterminals.  */
-#define YYNNTS  4
+#define YYNNTS  2
 /* YYNRULES -- Number of rules.  */
-#define YYNRULES  6
+#define YYNRULES  4
 /* YYNSTATES -- Number of states.  */
-#define YYNSTATES  9
+#define YYNSTATES  5
 
 #define YYUNDEFTOK  2
-#define YYMAXUTOK   261
+#define YYMAXUTOK   259
 
 
 /* YYTRANSLATE(TOKEN-NUM) -- Symbol number corresponding to TOKEN-NUM
@@ -510,15 +508,14 @@ static const yytype_int8 yytranslate[] =
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,     2,     2,     2,     2,     2,     1,     2,     3,     4,
-       5,     6
+       2,     2,     2,     2,     2,     2,     1,     2,     3,     4
 };
 
 #if YYDEBUG
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_int8 yyrline[] =
 {
-       0,    30,    30,    32,    33,    35,    36
+       0,    27,    27,    31,    33
 };
 #endif
 
@@ -527,8 +524,8 @@ static const yytype_int8 yyrline[] =
    First, the terminals, then, starting at YYNTOKENS, nonterminals.  */
 static const char *const yytname[] =
 {
-  "$end", "error", "$undefined", "COUNT_A", "COUNT_B", "EOL", "C",
-  "$accept", "Patt", "count_A_list", "count_B_list", YY_NULLPTR
+  "$end", "error", "$undefined", "HelpingVerb", "NotHelpingVerb",
+  "$accept", "Sentence", YY_NULLPTR
 };
 #endif
 
@@ -537,11 +534,11 @@ static const char *const yytname[] =
    (internal) symbol number NUM (which must be that of a token).  */
 static const yytype_int16 yytoknum[] =
 {
-       0,   256,   257,   258,   259,   260,   261
+       0,   256,   257,   258,   259
 };
 # endif
 
-#define YYPACT_NINF (-4)
+#define YYPACT_NINF (-1)
 
 #define yypact_value_is_default(Yyn) \
   ((Yyn) == YYPACT_NINF)
@@ -555,7 +552,7 @@ static const yytype_int16 yytoknum[] =
      STATE-NUM.  */
 static const yytype_int8 yypact[] =
 {
-      -3,    -3,     1,    -2,    -4,    -4,    -2,    -4,    -4
+      -1,     0,    -1,    -1,    -1
 };
 
   /* YYDEFACT[STATE-NUM] -- Default reduction number in state STATE-NUM.
@@ -563,19 +560,19 @@ static const yytype_int8 yypact[] =
      means the default is an error.  */
 static const yytype_int8 yydefact[] =
 {
-       4,     4,     0,     6,     3,     1,     6,     2,     5
+       4,     0,     1,     2,     3
 };
 
   /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int8 yypgoto[] =
 {
-      -4,    -4,     2,    -1
+      -1,    -1
 };
 
   /* YYDEFGOTO[NTERM-NUM].  */
 static const yytype_int8 yydefgoto[] =
 {
-      -1,     2,     3,     7
+      -1,     1
 };
 
   /* YYTABLE[YYPACT[STATE-NUM]] -- What to do in state STATE-NUM.  If
@@ -583,31 +580,31 @@ static const yytype_int8 yydefgoto[] =
      number is the opposite.  If YYTABLE_NINF, syntax error.  */
 static const yytype_int8 yytable[] =
 {
-       1,     5,     6,     4,     0,     8
+       2,     0,     0,     3,     4
 };
 
 static const yytype_int8 yycheck[] =
 {
-       3,     0,     4,     1,    -1,     6
+       0,    -1,    -1,     3,     4
 };
 
   /* YYSTOS[STATE-NUM] -- The (internal number of the) accessing
      symbol of state STATE-NUM.  */
 static const yytype_int8 yystos[] =
 {
-       0,     3,     8,     9,     9,     0,     4,    10,    10
+       0,     6,     0,     3,     4
 };
 
   /* YYR1[YYN] -- Symbol number of symbol that rule YYN derives.  */
 static const yytype_int8 yyr1[] =
 {
-       0,     7,     8,     9,     9,    10,    10
+       0,     5,     6,     6,     6
 };
 
   /* YYR2[YYN] -- Number of symbols on the right hand side of rule YYN.  */
 static const yytype_int8 yyr2[] =
 {
-       0,     2,     2,     2,     0,     2,     0
+       0,     2,     2,     2,     0
 };
 
 
@@ -1302,32 +1299,20 @@ yyreduce:
   YY_REDUCE_PRINT (yyn);
   switch (yyn)
     {
+  case 2:
+#line 27 "q3helpingwordle.y"
+                               {printf(" y\n");}
+#line 1306 "y.tab.c"
+    break;
+
   case 3:
-#line 32 "pat.y"
-                                   {As++; printf("%d", As); }
-#line 1309 "y.tab.c"
-    break;
-
-  case 4:
-#line 33 "pat.y"
-                          {yyval = 0;}
-#line 1315 "y.tab.c"
-    break;
-
-  case 5:
-#line 35 "pat.y"
-                                   {Bs++;printf("%d", Bs);}
-#line 1321 "y.tab.c"
-    break;
-
-  case 6:
-#line 36 "pat.y"
-                          {yyval = 0;}
-#line 1327 "y.tab.c"
+#line 31 "q3helpingwordle.y"
+                            {printf(" n\n");}
+#line 1312 "y.tab.c"
     break;
 
 
-#line 1331 "y.tab.c"
+#line 1316 "y.tab.c"
 
       default: break;
     }
@@ -1559,19 +1544,38 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 38 "pat.y"
+#line 35 "q3helpingwordle.y"
 
 
-void yyerror(const char *s) {
-   printf("String Rejected: \n");
-   fprintf(stderr, "Error: %s\n", s);
+
+  
+void yyerror()
+{
+   printf("\n Invalid Parenthesis structure \n");
+   printf("\n Unbalanced Parenthesis : %c\n", '0');
+   // printf("\t%d--\n", yylval);
    flag=1;
 }
 
-int main() {
+
+void main()
+{
+   yyin=fopen("q3input.txt","r");
+
+   //remove comments
+   // printf("Preprocessing ie. removing comments to avoid invalid parenthesis decisions");
+
+   
+   //check closed bracket
+   // printf("\nChecking Closed Parenthesis");
+   
    yyparse();
    if(flag==0){
-      printf("\nString Accepted: %d A's followed by %d B's\n", As, Bs);
+    printf("\nFound the helpful verbs.");
+
    }
-   return 0;
+
+   printf("\nclosing resources\n");
+   fclose(yyin);
 }
+
