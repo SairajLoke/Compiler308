@@ -445,13 +445,13 @@ char *yytext;
 #line 2 "q2closedparenthesis.l"
    /*
 Sairaj Loke
-210001035 Assignment 6 12 March Q2 
+210001035 Assignment 6 19 March Q2
 */
 
   #include<stdio.h>
   #include "y.tab.h"
   extern int yylval;
-  extern char current_open_parenthesis;
+  // extern char current_open_parenthesis;
 
   /*
 Method 1: separate brackets
@@ -748,37 +748,37 @@ YY_RULE_SETUP
 	YY_BREAK
 case YY_STATE_EOF(INITIAL):
 #line 29 "q2closedparenthesis.l"
-return 0;
+return 0;   //return  means stop parsing
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
 #line 33 "q2closedparenthesis.l"
-{/*printf("%d", yytext[0]);*/current_open_parenthesis = '('; return OpParenR;  }
+{/*printf("%d", yytext[0]);*/printf("1"); return OpParenR;  }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
 #line 34 "q2closedparenthesis.l"
-{current_open_parenthesis = '{'; return OpParenC; }
+{ printf("2"); return OpParenC; }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
 #line 35 "q2closedparenthesis.l"
-{current_open_parenthesis = '['; return OpParenS; }
+{ printf("3"); return OpParenS; }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
 #line 37 "q2closedparenthesis.l"
-{return ClsParenR; }
+{ printf("4"); return ClsParenR; }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
 #line 38 "q2closedparenthesis.l"
-{return ClsParenC; }
+{ printf("5"); return ClsParenC; }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
 #line 39 "q2closedparenthesis.l"
-{return ClsParenS; }
+{ printf("6"); return ClsParenS; }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP

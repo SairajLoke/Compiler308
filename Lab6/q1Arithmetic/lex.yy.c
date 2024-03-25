@@ -442,7 +442,7 @@ char *yytext;
 #line 2 "arith.l"
    /*
 Sairaj Loke
-210001035 Assignment 5 12 March Q2 
+210001035 Assignment 6 19 March Q1
 */
 
   #include<stdio.h>

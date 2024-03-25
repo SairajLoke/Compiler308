@@ -1569,6 +1569,7 @@ void yyerror(const char *s) {
 }
 
 int main() {
+   printf("Enter the pattern : \n");
    yyparse();
    if(flag==0){
       printf("\nString Accepted: %d A's followed by %d B's\n", As, Bs);

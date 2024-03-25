@@ -3,6 +3,10 @@
 #include<set>
 #include <fstream>
 
+/*
+Sairaj Loke's processor that removes comments
+
+*/
 using namespace std;
 bool comment_started = false;  //changed 
 int line = 0 ;
@@ -37,7 +41,7 @@ int f(string input_str){
     //safe way to check if /* started or not
     if(input_str[ptr] == '/' && ptr < input_str.size() && input_str[ptr+1] == '*'){ 
         comment_started= true;
-        cout<<"comment started"; 
+        cout<<" comment started"; 
         thisiscomment = 1;
 
         //shouldnt return 1 as this comment can end on same line (/*a afafa */)
@@ -51,10 +55,17 @@ int f(string input_str){
         cout<<" this not a comment"; thisiscomment= 0; return 0;
     }
 
-    
+    // if // then directly return comment true
     if(input_str[ptr]== '/' && input_str[ptr + 1] == '/' ){
         cout<<"comment//"; thisiscomment= 1; return 1;
-    }else if(input_str[ptr + 1] != '*' && !comment_started){
+    }
+    //if */ (blank removed) then return 1 and comment over
+    else if(input_str[ptr] == '*' && input_str[ptr + 1] == '/' && comment_started == true){
+            if(ptr + 1 == input_str.size() - 1){
+                cout<<"commentover"; thisiscomment= 1; comment_started=false;return 1;
+            }
+    }
+    else if(input_str[ptr + 1] != '*' && !comment_started){
         cout<<"there not a comment"; thisiscomment= 0; return 0;
     }else{
         ptr += 2;//to avoid /*/
@@ -101,8 +112,8 @@ int f(string input_str){
 int main() {
 
     string inputstr;
-    ifstream ftest("comment_tests.txt");
-    ofstream fpreprocessed("preprocessed.txt");
+    ifstream ftest("q2input.c");
+    ofstream fpreprocessed("q2preprocessed.txt");
 
     // std::getline(ftest, inputstr) ; 
     // cout<<"----"<<inputstr<<endl;
@@ -111,6 +122,8 @@ int main() {
     if( multi_line ){
         while(std::getline(ftest, inputstr)){
             line += 1;
+            // if(inputstr.size() ==0){continue;}
+
             std::cout<<"\n : "<<inputstr; f(inputstr);
             if(!thisiscomment){ fpreprocessed<<inputstr<<endl;}
             

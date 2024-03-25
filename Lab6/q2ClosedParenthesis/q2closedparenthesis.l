@@ -7,7 +7,7 @@ Sairaj Loke
   #include<stdio.h>
   #include "y.tab.h"
   extern int yylval;
-  extern char current_open_parenthesis;
+  // extern char current_open_parenthesis;
 
   /*
 Method 1: separate brackets
@@ -30,13 +30,13 @@ Method 2: regex takes care of closred brackets
 
 
 
-"(" {/*printf("%d", yytext[0]);*/current_open_parenthesis = '('; return OpParenR;  }
-"{" {current_open_parenthesis = '{'; return OpParenC; }
-"[" {current_open_parenthesis = '['; return OpParenS; }
+"(" {/*printf("%d", yytext[0]);*/printf("1"); return OpParenR;  }
+"{" { printf("2"); return OpParenC; }
+"[" { printf("3"); return OpParenS; }
 
-")" {return ClsParenR; }
-"}" {return ClsParenC; }
-"]" {return ClsParenS; }
+")" { printf("4"); return ClsParenR; }
+"}" { printf("5"); return ClsParenC; }
+"]" { printf("6"); return ClsParenS; }
 . //{yylval = yytext[0] ; return CodeEle;}//[^(){}[]] return CodeEle; return yytext[0] ;//yytext[0]; //check how yytext differs from return an unused token
   
 %%

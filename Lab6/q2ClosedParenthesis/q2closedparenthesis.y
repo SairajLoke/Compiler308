@@ -15,7 +15,7 @@ so you can see the unordered set mentions in the code...haven't removed it yet a
   extern int yytext;
   extern FILE *yyin;
   extern FILE *yyout;
-  extern char current_open_parenthesis = '-';
+//   extern char current_open_parenthesis = '-';
 
 /*
     CodeChunk: '('CodeChunk')' {total_Rbracket_pairs++ ; printf("r");} 
@@ -56,7 +56,7 @@ CCode: CodeChunk{}//printf("parsed");};
 void yyerror()
 {
    printf("\n Invalid Parenthesis structure \n");
-   printf("\n Unbalanced Parenthesis : %c\n", current_open_parenthesis);
+   // printf("\n Unbalanced Parenthesis : %c\n", current_open_parenthesis);
    // printf("\t%d--\n", yylval);
    flag=1;
 }
@@ -64,8 +64,10 @@ void yyerror()
 
 void main()
 {
-   yyin=fopen("q1input.c","r");
-	yyout=fopen("q1output.txt","w");
+   yyin=fopen("q2preprocessed.txt","r");
+	yyout=fopen("q2output.txt","w");
+
+
 
    //remove comments
    // printf("Preprocessing ie. removing comments to avoid invalid parenthesis decisions");

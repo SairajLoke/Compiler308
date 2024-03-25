@@ -440,13 +440,17 @@ int yy_flex_debug = 0;
 char *yytext;
 #line 1 "arith.l"
 #line 2 "arith.l"
-   /* Definition section */
+   /*
+Sairaj Loke
+210001035 Assignment 5 12 March Q2 
+*/
+
   #include<stdio.h>
   #include "y.tab.h"
   extern int yylval;
-#line 448 "lex.yy.c"
+#line 452 "lex.yy.c"
 /* Rule Section */
-#line 450 "lex.yy.c"
+#line 454 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -663,9 +667,9 @@ YY_DECL
 		}
 
 	{
-#line 9 "arith.l"
+#line 13 "arith.l"
 
-#line 669 "lex.yy.c"
+#line 673 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -724,7 +728,7 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 10 "arith.l"
+#line 14 "arith.l"
 {
           yylval=atoi(yytext);
           return NUMBER;
@@ -733,26 +737,26 @@ YY_RULE_SETUP
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 15 "arith.l"
+#line 19 "arith.l"
 ;
 	YY_BREAK
 case 3:
 /* rule 3 can match eol */
 YY_RULE_SETUP
-#line 17 "arith.l"
+#line 21 "arith.l"
 return 0;
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 19 "arith.l"
+#line 23 "arith.l"
 return yytext[0];
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 21 "arith.l"
+#line 25 "arith.l"
 ECHO;
 	YY_BREAK
-#line 756 "lex.yy.c"
+#line 760 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1757,7 +1761,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 21 "arith.l"
+#line 25 "arith.l"
 
   
 int yywrap()

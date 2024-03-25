@@ -7,6 +7,10 @@ int Bs = 0;
 int flag = 0 ;
 /*
 Note:  
+
+  Sairaj Loke
+  210001035  Assignment 5 12 March Q1
+
 Refernces: https://developer.ibm.com/tutorials/au-lexyacc/
 
 
@@ -44,6 +48,7 @@ void yyerror(const char *s) {
 }
 
 int main() {
+   printf("Enter the pattern : \n");
    yyparse();
    if(flag==0){
       printf("\nString Accepted: %d A's followed by %d B's\n", As, Bs);

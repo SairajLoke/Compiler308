@@ -68,16 +68,23 @@
 /* First part of user prologue.  */
 #line 1 "arith.y"
 
-   /* Definition section */
+/*
+Sairaj Loke
+210001035 Assignment 5 12 March Q2 
+
+I was trying to maintain a set of chars but need to check compiling yacc in c++ for that 
+so you can see the unordered set mentions in the code...haven't removed it yet as i'll get back to it some other day
+*/
+
   #include<stdio.h>
   int flag=0;
 //   #include<unordered_set>
-//   unordered_set<char> operator_set;
+//   unordered_set<char> operator_set;  
   int total_operands = 0;
   int total_operators= 0;
 
 
-#line 81 "y.tab.c"
+#line 88 "y.tab.c"
 
 # ifndef YY_CAST
 #  ifdef __cplusplus
@@ -505,7 +512,7 @@ static const yytype_int8 yytranslate[] =
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_int8 yyrline[] =
 {
-       0,    24,    24,    31,    33,    35,    37,    39,    41,    43
+       0,    31,    31,    36,    38,    40,    42,    44,    46,    48
 };
 #endif
 
@@ -1298,61 +1305,59 @@ yyreduce:
   switch (yyn)
     {
   case 2:
-#line 24 "arith.y"
+#line 31 "arith.y"
                        {
   
-         printf("\nResult=%d\n", yyval);
-  
-         // return 0;
+         printf("\nResult=%d\n", yyval);//the expr could be invalid at this point
   
         }
-#line 1310 "y.tab.c"
+#line 1315 "y.tab.c"
     break;
 
   case 3:
-#line 31 "arith.y"
+#line 36 "arith.y"
          {yyval=yyvsp[-2]+yyvsp[0]; total_operators++ ;}
-#line 1316 "y.tab.c"
+#line 1321 "y.tab.c"
     break;
 
   case 4:
-#line 33 "arith.y"
+#line 38 "arith.y"
         {yyval=yyvsp[-2]-yyvsp[0]; total_operators++ ;}
-#line 1322 "y.tab.c"
+#line 1327 "y.tab.c"
     break;
 
   case 5:
-#line 35 "arith.y"
+#line 40 "arith.y"
         {yyval=yyvsp[-2]*yyvsp[0]; total_operators++ ;}
-#line 1328 "y.tab.c"
+#line 1333 "y.tab.c"
     break;
 
   case 6:
-#line 37 "arith.y"
+#line 42 "arith.y"
         {yyval=yyvsp[-2]/yyvsp[0]; total_operators++ ;}
-#line 1334 "y.tab.c"
+#line 1339 "y.tab.c"
     break;
 
   case 7:
-#line 39 "arith.y"
+#line 44 "arith.y"
         {yyval=yyvsp[-2]%yyvsp[0]; total_operators++ ;}
-#line 1340 "y.tab.c"
+#line 1345 "y.tab.c"
     break;
 
   case 8:
-#line 41 "arith.y"
+#line 46 "arith.y"
           {yyval=yyvsp[-1]; total_operators++ ;}
-#line 1346 "y.tab.c"
+#line 1351 "y.tab.c"
     break;
 
   case 9:
-#line 43 "arith.y"
+#line 48 "arith.y"
           {yyval=yyvsp[0]; total_operands++; }
-#line 1352 "y.tab.c"
+#line 1357 "y.tab.c"
     break;
 
 
-#line 1356 "y.tab.c"
+#line 1361 "y.tab.c"
 
       default: break;
     }
@@ -1584,7 +1589,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 47 "arith.y"
+#line 52 "arith.y"
 
 
 
@@ -1595,7 +1600,7 @@ void yyerror()
    flag=1;
 }
 
-//driver code
+
 void main()
 {
    printf("\nEnter Any Arithmetic Expression which can have operations Addition, Subtraction, Multiplication, Division, Modulus and Round brackets:\n");
