@@ -4,8 +4,8 @@
 #include <fstream>
 
 /*
-Sairaj Loke's processor that removes comments
-
+Sairaj Loke's processor that removes comments  from any file
+210001035 
 */
 using namespace std;
 bool comment_started = false;  //changed 
@@ -34,6 +34,7 @@ int f(string input_str){
     while(input_str[endptr] == ' '){ endptr--; }
     input_str = input_str.substr(ptr,endptr-ptr+1);
     // cout<<"@blank removal : "<<input_str<<endl<<" "<<input_str.size();
+    ptr=0;
 
     //special base case /*/
     if(ptr < (input_str.size()-2) && input_str[ptr] == '/' && input_str[ptr+1] == '*' && input_str[ptr+2]== '/'){cout<<"not a comment"<<endl; thisiscomment=0; return 0;}
@@ -51,6 +52,7 @@ int f(string input_str){
     //checking first element(not idx 0 as line could have blank space in the start), if it is the last, then just return 0 
     // as for it to be a comment req at least 2chars 
     // except if the comment is already started
+    // cout<<input_str[ptr]<<" ****** "<<ptr<<endl;
     if(ptr >= (input_str.size()-1) || (input_str[ptr] != '/' && !comment_started)){ //changed   
         cout<<" this not a comment"; thisiscomment= 0; return 0;
     }
