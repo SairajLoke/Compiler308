@@ -22,22 +22,23 @@ Refernces: https://developer.ibm.com/tutorials/au-lexyacc/
 
 %token COUNT_A
 %token COUNT_B
+%token COUNT_C
 %token EOL C
 
-%type count_A_list
+%type count_A_list 
 %type count_B_list
 
 %start Patt
 
 %%
 
-Patt: count_A_list count_B_list ;//KEEPING THE accp lines will print it even after rejected 
+Patt: COUNT_C count_A_list count_B_list ;//KEEPING THE accp lines will print it even after rejected 
 
 count_A_list: COUNT_A count_A_list {As++; printf("%d", As); }
-            | /* empty */ {$$ = 0;};
+            | /* empty */ {printf("here");};
 
 count_B_list: COUNT_B count_B_list {Bs++;printf("%d", Bs);}
-            | /* empty */ {$$ = 0;};
+            | /* empty */ {}; //$$ = 0;
 
 %%
 

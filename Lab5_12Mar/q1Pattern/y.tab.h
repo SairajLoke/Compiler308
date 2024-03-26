@@ -51,15 +51,17 @@ extern int yydebug;
   {
     COUNT_A = 258,
     COUNT_B = 259,
-    EOL = 260,
-    C = 261
+    COUNT_C = 260,
+    EOL = 261,
+    C = 262
   };
 #endif
 /* Tokens.  */
 #define COUNT_A 258
 #define COUNT_B 259
-#define EOL 260
-#define C 261
+#define COUNT_C 260
+#define EOL 261
+#define C 262
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED

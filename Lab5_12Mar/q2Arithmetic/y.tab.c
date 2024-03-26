@@ -512,7 +512,7 @@ static const yytype_int8 yytranslate[] =
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_int8 yyrline[] =
 {
-       0,    31,    31,    36,    38,    40,    42,    44,    46,    48
+       0,    31,    31,    36,    38,    41,    43,    45,    48,    51
 };
 #endif
 
@@ -560,7 +560,7 @@ static const yytype_int8 yypact[] =
 static const yytype_int8 yydefact[] =
 {
        0,     9,     0,     0,     2,     0,     1,     0,     0,     0,
-       0,     0,     8,     3,     4,     5,     6,     7
+       0,     0,     4,     3,     5,     6,     7,     8
 };
 
   /* YYPGOTO[NTERM-NUM].  */
@@ -1322,36 +1322,36 @@ yyreduce:
 
   case 4:
 #line 38 "arith.y"
-        {yyval=yyvsp[-2]-yyvsp[0]; total_operators++ ;}
+         {yyval=yyvsp[-1]; total_operators++ ;}
 #line 1327 "y.tab.c"
     break;
 
   case 5:
-#line 40 "arith.y"
-        {yyval=yyvsp[-2]*yyvsp[0]; total_operators++ ;}
+#line 41 "arith.y"
+        {yyval=yyvsp[-2]-yyvsp[0]; total_operators++ ;}
 #line 1333 "y.tab.c"
     break;
 
   case 6:
-#line 42 "arith.y"
-        {yyval=yyvsp[-2]/yyvsp[0]; total_operators++ ;}
+#line 43 "arith.y"
+        {yyval=yyvsp[-2]*yyvsp[0]; total_operators++ ;}
 #line 1339 "y.tab.c"
     break;
 
   case 7:
-#line 44 "arith.y"
-        {yyval=yyvsp[-2]%yyvsp[0]; total_operators++ ;}
+#line 45 "arith.y"
+        {yyval=yyvsp[-2]/yyvsp[0]; total_operators++ ;}
 #line 1345 "y.tab.c"
     break;
 
   case 8:
-#line 46 "arith.y"
-          {yyval=yyvsp[-1]; total_operators++ ;}
+#line 48 "arith.y"
+        {yyval=yyvsp[-2]%yyvsp[0]; total_operators++ ;}
 #line 1351 "y.tab.c"
     break;
 
   case 9:
-#line 48 "arith.y"
+#line 51 "arith.y"
           {yyval=yyvsp[0]; total_operands++; }
 #line 1357 "y.tab.c"
     break;
@@ -1589,7 +1589,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 52 "arith.y"
+#line 55 "arith.y"
 
 
 

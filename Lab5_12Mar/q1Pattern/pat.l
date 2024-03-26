@@ -9,8 +9,9 @@
 %}
 
 %%
-A          {return COUNT_A; }
-B          { return COUNT_B; }
+010          { return COUNT_C; }
+0             {return COUNT_A; }
+1             {return COUNT_B; }
 [\n]          { return 0; }
 .           { return yytext[0];}
 

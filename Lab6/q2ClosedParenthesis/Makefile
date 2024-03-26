@@ -13,4 +13,9 @@ ops:
 clean:
 	rm y.tab.c y.tab.h lex.yy.c a.out
 
+ignr:
 
+	lex q2.l
+	yacc -d q2.y
+	cc lex.yy.c y.tab.c -ll
+	./a.out

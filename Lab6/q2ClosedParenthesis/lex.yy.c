@@ -451,6 +451,8 @@ Sairaj Loke
   #include<stdio.h>
   #include "y.tab.h"
   extern int yylval;
+
+
   // extern char current_open_parenthesis;
 
   /*
@@ -462,9 +464,9 @@ Method 2: regex takes care of closred brackets
 [\n] return 0;
 
   */
-#line 466 "lex.yy.c"
-/* Rule Section */
 #line 468 "lex.yy.c"
+/* Rule Section */
+#line 470 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -681,10 +683,10 @@ YY_DECL
 		}
 
 	{
-#line 25 "q2closedparenthesis.l"
+#line 27 "q2closedparenthesis.l"
 
 
-#line 688 "lex.yy.c"
+#line 690 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -743,54 +745,54 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 27 "q2closedparenthesis.l"
+#line 29 "q2closedparenthesis.l"
 ;
 	YY_BREAK
 case YY_STATE_EOF(INITIAL):
-#line 29 "q2closedparenthesis.l"
+#line 31 "q2closedparenthesis.l"
 return 0;   //return  means stop parsing
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 33 "q2closedparenthesis.l"
+#line 35 "q2closedparenthesis.l"
 {/*printf("%d", yytext[0]);*/printf("1"); return OpParenR;  }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 34 "q2closedparenthesis.l"
-{ printf("2"); return OpParenC; }
+#line 36 "q2closedparenthesis.l"
+{ printf("2");  return OpParenC; }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 35 "q2closedparenthesis.l"
-{ printf("3"); return OpParenS; }
+#line 37 "q2closedparenthesis.l"
+{ printf("3");  return OpParenS; }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 37 "q2closedparenthesis.l"
-{ printf("4"); return ClsParenR; }
+#line 39 "q2closedparenthesis.l"
+{ printf("4");  return ClsParenR; }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 38 "q2closedparenthesis.l"
+#line 40 "q2closedparenthesis.l"
 { printf("5"); return ClsParenC; }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 39 "q2closedparenthesis.l"
-{ printf("6"); return ClsParenS; }
+#line 41 "q2closedparenthesis.l"
+{ printf("6");  return ClsParenS; }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 40 "q2closedparenthesis.l"
+#line 42 "q2closedparenthesis.l"
 //{yylval = yytext[0] ; return CodeEle;}//[^(){}[]] return CodeEle; return yytext[0] ;//yytext[0]; //check how yytext differs from return an unused token
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 42 "q2closedparenthesis.l"
+#line 44 "q2closedparenthesis.l"
 ECHO;
 	YY_BREAK
-#line 794 "lex.yy.c"
+#line 796 "lex.yy.c"
 
 	case YY_END_OF_BUFFER:
 		{
@@ -1793,7 +1795,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 42 "q2closedparenthesis.l"
+#line 44 "q2closedparenthesis.l"
 
   
 int yywrap()

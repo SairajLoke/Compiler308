@@ -14,7 +14,7 @@ Sairaj Loke
 /* Rule Section */
 %%
 
-"am"  { printf(yytext); return HelpingVerb;}
+^"am"  { printf(yytext); return HelpingVerb;}
 "is"  { printf(yytext); return HelpingVerb;}
 "are" {printf(yytext);return HelpingVerb;}
 "was" {printf(yytext);return HelpingVerb;}

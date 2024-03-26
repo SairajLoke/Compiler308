@@ -40,10 +40,12 @@ ArithmeticExpression: E{
  |E'*'E {$$=$1*$3; total_operators++ ;} //operator_set.insert('*');}
   
  |E'/'E {$$=$1/$3; total_operators++ ;} //operator_set.insert('/');}
-  
+
+
  |E'%'E {$$=$1%$3; total_operators++ ;} //operator_set.insert('%');}
   
- |'('E')' {$$=$2; total_operators++ ;} //operator_set.insert('('); operator_set.insert(')');}
+
+|'('E')' {$$=$2; total_operators++ ;} //operator_set.insert('('); operator_set.insert(')');}
   
  | NUMBER {$$=$1; total_operands++; }
   

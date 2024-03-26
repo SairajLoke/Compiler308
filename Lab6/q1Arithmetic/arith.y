@@ -7,6 +7,8 @@ I was trying to maintain a set of chars but need to check compiling yacc in c++ 
 so you can see the unordered set mentions in the code...haven't removed it yet as i'll get back to it some other day
 */
 
+// if we write %right then we ignore (
+
   #include<stdio.h>
   int flag=0;
 //   #include<unordered_set>
@@ -23,7 +25,7 @@ so you can see the unordered set mentions in the code...haven't removed it yet a
 
 %left '*' '/' '%'
   
-%left '(' ')'
+%left '(' ')'  
   
 /* Rule Section */
 %%

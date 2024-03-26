@@ -94,7 +94,7 @@ so you can see the unordered set mentions in the code...haven't removed it yet a
  | CodeChunk: '['CodeChunk']' {total_Sbracket_pairs++ ;printf("s");} 
 
 */
-
+  extern int yylval; 
 
 #line 100 "y.tab.c"
 
@@ -1627,6 +1627,7 @@ void main()
 
    }
 
+   // printf("%d",or, );
    printf("closing resources\n");
    fclose(yyin);
    fclose(yyout);

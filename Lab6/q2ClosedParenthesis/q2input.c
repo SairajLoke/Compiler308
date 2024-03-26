@@ -1,8 +1,10 @@
 #include<stdio.h>
 /*
-this code prints Aao Sai
+this code prints Sai here
 */
 int main(){
-    printf("Aao Sai");
+    printf("Sai here");
     //to print
 }
+
+
