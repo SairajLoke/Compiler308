@@ -1,9 +1,9 @@
 %{
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
 
-bool validated = false;
+
+
 %}
 
 
@@ -11,7 +11,7 @@ bool validated = false;
 %token DIGIT NEWLINE INVALID
 
 %%
-start: DIGIT NEWLINE {printf("is a digit\n"); exit(0);}; 
+start: DIGIT NEWLINE {printf("is a digit\n"); exit(0);};  //return 0 does the same as exit(0)
 %%
 
 int main() {

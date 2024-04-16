@@ -444,8 +444,19 @@ char *yytext;
 #line 1 "q3.l"
 #line 2 "q3.l"
 #include "y.tab.h"
-#line 448 "lex.yy.c"
-#line 449 "lex.yy.c"
+
+/*
+Note:
+Sairaj Loke 
+210001035
+
+allowing empty space (not newline ) before digit
+also note the newline necc otherwise 99 gives is a digit and error as well
+
+*/
+
+#line 459 "lex.yy.c"
+#line 460 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -662,9 +673,9 @@ YY_DECL
 		}
 
 	{
-#line 5 "q3.l"
+#line 16 "q3.l"
 
-#line 668 "lex.yy.c"
+#line 679 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -723,26 +734,26 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 6 "q3.l"
+#line 17 "q3.l"
 { return DIGIT;}
 	YY_BREAK
 case 2:
 /* rule 2 can match eol */
 YY_RULE_SETUP
-#line 7 "q3.l"
-{ return NEWLINE; }
+#line 18 "q3.l"
+{ return NEWLINE;}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 8 "q3.l"
+#line 19 "q3.l"
 { return INVALID; }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 9 "q3.l"
+#line 20 "q3.l"
 ECHO;
 	YY_BREAK
-#line 746 "lex.yy.c"
+#line 757 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1747,7 +1758,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 9 "q3.l"
+#line 20 "q3.l"
 
 
 int yywrap( )

@@ -70,9 +70,9 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
 
-bool validated = false;
+
+
 
 #line 78 "y.tab.c"
 
